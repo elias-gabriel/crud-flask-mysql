@@ -2,12 +2,11 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_mysqldb import MySQL
 
 
-
 app = Flask(__name__)
 app.secret_key = 'CRUD2'
 
-app.config['MYSQL_HOST'] = ''
-app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = ''
 app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'crud2'
 
@@ -20,17 +19,12 @@ def Index():
     cur.execute("SELECT  * FROM students")
     data = cur.fetchall()
     cur.close()
-
-
-
-
-    return render_template('index2.html', students=data )
+    return render_template('index2.html', students=data)
 
 
 
 @app.route('/insert', methods = ['POST'])
 def insert():
-
     if request.method == "POST":
         flash("Dados Inseridos com Sucesso!")
         name = request.form['name']
@@ -56,7 +50,6 @@ def delete(id_data):
 
 @app.route('/update',methods=['POST','GET'])
 def update():
-
     if request.method == 'POST':
         id_data = request.form['id']
         name = request.form['name']
