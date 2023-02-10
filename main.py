@@ -3,12 +3,12 @@ from flask_mysqldb import MySQL
 
 
 app = Flask(__name__)
-app.secret_key = 'CRUD2'
+app.secret_key = 'CRUD'
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = ''
 app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'crud2'
+app.config['MYSQL_DB'] = 'crud'
 
 mysql = MySQL(app)
 
